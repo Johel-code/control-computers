@@ -9,6 +9,13 @@ class Computer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'serial',
+        'marca',
+        'image',
+        'state_id'
+    ];
+
     public function state()
     {
         return $this->belongsTo(State::class);

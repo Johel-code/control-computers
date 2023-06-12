@@ -25,4 +25,5 @@ Route::middleware([
     Route::get('/', function () {
         return view('welcome');
     });
+    Route::view('/docentes','index-docentes');
 });

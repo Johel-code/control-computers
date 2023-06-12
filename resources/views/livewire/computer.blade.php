@@ -1,5 +1,5 @@
 <div>
-    <div>
+    <div class="pt-8">
         <div class="flex flex-row place-content-between">
             <div class="sm:ml-8">
                 <button 
@@ -40,9 +40,9 @@
                                 <div>
 
                                     @if (!empty($search))
-                                        @if ($products->count() > 0)
+                                        @if ($computers->count() > 0)
                                             <div class="bg-green-100 border border-green-400 text-green-700 px-2 py-3 rounded relative" role="alert">
-                                                <strong class="font-bold">Se encontraron {{ $products->total() }} resultados</strong>
+                                                <strong class="font-bold">Se encontraron {{ $computers->total() }} resultados</strong>
                                             </div>
                                         @else
                                             <div class="bg-red-100 border border-red-400 text-red-700 px-2 py-3 rounded relative" role="alert">
@@ -54,14 +54,14 @@
                                 </div>
                             </div>
                             <th class="2xl:py-4 2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Id</th>
-                            <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Seria</th>
+                            <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Serial</th>
                             <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Marca</th>
                             <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Estado</th>
                             {{-- <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Fecha vencimiento</th>
                             <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Marca</th>
                             <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Categoría</th>
-                            <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Estado</th>
-                            <th class="2xl:text-lg border-b-2 border-black">Editar</th>   --}}
+                            <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Estado</th> --}}
+                            <th class="2xl:text-lg border-b-2 border-black">Editar</th>   
                         </tr>
                     </thead>
                     <tbody>
@@ -83,23 +83,22 @@
                             </th>
 
                             <td wire:click="mostrarModal({{ $product->id }})" class="cursor-pointer pr-3 py-1 2xl:text-lg text-center text-ellipsis overflow-hidden border-b border-gray-400">{{$product->marca }}</th>
-                            <td wire:click="mostrarModal({{ $product->id }})" class="cursor-pointer pr-3 py-1 2xl:text-lg text-center text-ellipsis overflow-hidden border-b border-gray-400">{{$product->state }}</th>
+                            <td wire:click="mostrarModal({{ $product->id }})" class="cursor-pointer pr-3 py-1 2xl:text-lg text-center text-ellipsis overflow-hidden border-b border-gray-400">{{$product->state->name }}</th>
                             {{-- <td wire:click="mostrarModal({{ $product->id }})" class="cursor-pointer pr-3 py-1 2xl:text-lg text-center text-ellipsis overflow-hidden border-b border-gray-400">@if($product->fecha_vencimiento) {{date('d/m/Y', strtotime($product->fecha_vencimiento))}} @else Sin Vencimiento @endif</th>
                             <td wire:click="mostrarModal({{ $product->id }})" class="cursor-pointer pr-3 py-1 2xl:text-lg text-center text-ellipsis overflow-hidden border-b border-gray-400">{{$product->marca}}</th>
                             <td wire:click="mostrarModal({{ $product->id }})" class="cursor-pointer pr-3 py-1 2xl:text-lg text-center text-ellipsis overflow-hidden border-b border-gray-400">{{$category[$product->category_id-1]->name_categoy}}</th>
                             <td class="pr-3 py-1 2xl:text-lg text-center  border-b border-gray-400">
                                 <livewire:product.toggle-product :product="$product" :field="'estado_product'"
                                 :key="'toggle-button'.$product->id">
-                            </td>
-                            <td class="pr-3 py-1 2xl:text-lg text-center border-b border-gray-400"> --}}
-                                {{-- <a href="/modificar-producto/{{ $product->id }}"> --}}
-                                {{-- <a href="{{ url('modificar-producto', $product->id) }}">
+                            </td>  --}}
+                            <td class="pr-3 py-1 2xl:text-lg text-center border-b border-gray-400">
+                                    <a wire:click="editar({{ $product->id }})"> 
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2.5" stroke="#3391d6" class="w-6 h-6 m-auto block">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                     </svg>
                                 </a>
                             </td>
-                        </tr> --}}
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

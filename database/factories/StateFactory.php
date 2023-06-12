@@ -17,7 +17,13 @@ class StateFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'marca' => $this->faker->unique()->randomElement([
+                'Prestada',
+                'Libre',
+                'En mantenimiento',
+                'Desechada',
+                'Asus'
+            ]), 
         ];
     }
 }
