@@ -24,4 +24,8 @@ class Computer extends Model
     {
         return $this->hasMany(Periferico::class);
     }
+    public function operations()
+    {
+        return $this->hasMany(Operation::class);
+    }
 }

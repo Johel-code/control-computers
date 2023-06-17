@@ -25,5 +25,6 @@ Route::middleware([
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::view('/docentes','index-docentes');
+    Route::view('/docentes','index-docentes')->name('docentes');
+    Route::view('/estudiantes','index-estudiantes')->name('estudiantes');
 });

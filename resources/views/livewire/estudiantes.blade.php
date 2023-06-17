@@ -63,10 +63,10 @@
                                     <div>
 
                                         @if (!empty($search))
-                                        @if ($docentes->count() > 0)
+                                        @if ($estudiantes->count() > 0)
                                         <div class="bg-green-100 border border-green-400 text-green-700 px-2 py-3 rounded relative"
                                             role="alert">
-                                            <strong class="font-bold">Se encontraron {{ $docentes->total() }}
+                                            <strong class="font-bold">Se encontraron {{ $estudiantes->total() }}
                                                 resultados</strong>
                                         </div>
                                         @else
@@ -110,7 +110,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($docentes as $product)
+                            @foreach($estudiantes as $product)
 
 
                             <tr class="hover:bg-blue-200">
@@ -167,7 +167,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $docentes->links() }}
+                    {{ $estudiantes->links() }}
                 </div>
         </div>
     </div>

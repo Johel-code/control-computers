@@ -2,20 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Funcion;
 use App\Models\Role;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
-use PhpParser\Node\Expr\FuncCall;
 
-class Docentes extends Component
+class Estudiantes extends Component
 {
     use WithPagination;
 
     public $search = "";
-    
-    public $id_docente, $rol, $name, $email, $direccion, $ci, $fecha_nacimiento, $password;
+
+    public $id_estudiante, $rol, $name, $email, $direccion, $ci, $fecha_nacimiento, $password;
 
     public $modal = false;
     
@@ -30,14 +28,14 @@ class Docentes extends Component
 
     public function render()
     {
-        $docentes = User::where('name', 'like', '%' . $this->search . '%')
+        $estudiantes = User::where('name', 'like', '%' . $this->search . '%')
             ->whereHas('roles', function ($query){
-                $query->where('roles.id', 2);
+                $query->where('roles.id', 3);
             })
             ->paginate(5);
 
-        return view('livewire.docentes', [
-            'docentes' => $docentes,
+        return view('livewire.estudiantes', [
+            'estudiantes' => $estudiantes,
             'roles' => Role::all()
         ]);
     }
@@ -65,13 +63,13 @@ class Docentes extends Component
         $this->email = '';
         $this->fecha_nacimiento = '';
         $this->rol = '';
-        $this->id_docente = null;
+        $this->id_estudiante = null;
     }
 
     public function editar($id)
     {
         $docente = User::findOrFail($id);
-        $this->id_docente = $id;
+        $this->id_estudiante = $id;
         $this->name = $docente->name;
         $this->email = $docente->email;
         $this->direccion = $docente->direccion;
@@ -85,7 +83,7 @@ class Docentes extends Component
     public function guardar()
     {
         $this->validate();
-        $user = User::updateOrCreate(['id'=>$this->id_docente],
+        $user = User::updateOrCreate(['id'=>$this->id_estudiante],
         [
             'name' => $this->name,
             'email' => $this->email,
@@ -97,7 +95,7 @@ class Docentes extends Component
 
         $user->roles()->attach($this->rol);
 
-        Session()->flash('message', $this->id_docente ? 'Actualizacion exitosa' : 'Creado exitosamente');
+        Session()->flash('message', $this->id_estudiante ? 'Actualizacion exitosa' : 'Creado exitosamente');
         $this->cerrarModal();
         $this->limpiarCampos();
     }
