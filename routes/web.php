@@ -27,4 +27,5 @@ Route::middleware([
     });
     Route::view('/docentes','index-docentes')->name('docentes');
     Route::view('/estudiantes','index-estudiantes')->name('estudiantes');
+    Route::view('/asignaciones','index-asignaciones')->name('asignaciones');
 });
