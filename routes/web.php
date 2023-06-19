@@ -22,10 +22,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/', function () {
+    Route::get('/welcome', function () {
         return view('welcome');
     });
     Route::view('/docentes','index-docentes')->name('docentes');
     Route::view('/estudiantes','index-estudiantes')->name('estudiantes');
-    Route::view('/asignaciones','index-asignaciones')->name('asignaciones');
+    Route::view('/','index-asignaciones')->name('asignaciones');
 });

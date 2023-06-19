@@ -18,6 +18,10 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    public function hasRole($role)
+    {
+        return $this->roles->contains('name', $role);
+    }
     public function operations()
     {
         return $this->hasMany(Operation::class);

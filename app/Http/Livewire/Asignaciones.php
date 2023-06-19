@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Computer;
 use App\Models\State;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -32,7 +33,7 @@ class Asignaciones extends Component
         $computers = Computer::where('serial', 'like', '%' . $this->search . '%')
             ->where('computers.state_id', '=', 1)
             ->whereHas('operations', function ($query){
-                $query->where('operations.user_id', 2);
+                $query->where('operations.user_id', Auth::id());
             })
             ->paginate(5);
 
