@@ -17,7 +17,17 @@ class ComputerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'serial' => $this->faker->unique()->numberBetween(10000,99999),
+            'marca' => $this->faker->randomKey([
+                'Apple' => 1,
+                'Hp' => 2,
+                'Lenovo'=> 3,
+                'Dell'=> 4,
+                'Acer'=> 5,
+                'Asus'=> 6,
+            ]),
+            'image' => $this->faker->image(null, 640, 480),
+            'state_id' => $this->faker->numberBetween(1,4)
         ];
     }
 }

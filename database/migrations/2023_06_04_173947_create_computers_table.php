@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('serial');
             $table->string('marca');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreignId('state_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
