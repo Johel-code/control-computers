@@ -1,15 +1,7 @@
 <div>
     <div class="pt-8">
-        <div class="flex flex-row place-content-between">
-            <div class="sm:ml-8">
-                <button 
-                    wire:click="crear()"
-                    class=" bg-[#3988FF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    AÑADIR
-                </button>
-                @include('livewire.crear')
-            </div>  
-
+        <div class="flex flex-row-reverse place-content-between">
+            
             <div class="flex sm:mr-8">
                 <input wire:model="search" type="search"  class=" p-2.5 w-80 md:w-56 text-sm text-gray-900 bg-gray-50 rounded-lg border-l-gray-300 border border-gray-300 focus:ring-gray-300 focus:border-gray-300" placeholder="Buscar">
                 {{-- <button type="submit" class="absolute top-0 left-96 ml-20 pl-4 p-2.5 bg-gray-50 rounded-r-lg border border-gray-300 hover:bg-gray-200 focus:ring-2 focus:outline-none focus:ring-gray-300">
@@ -24,19 +16,13 @@
         <div class="py-2"></div>        
 
         <div class="sm:px-8">
-           @if(session()->has('message'))
-                <div class="bg-green-100 border border-green-400 text-green-700 py-3 rounded relative ml:120" role="alert" 
-                style="padding-left: 28px;">
-                    <strong class="font-bold">{{ session('message') }}</strong>
-                </div>
-            @endif
-            
+                       
             <livewire:modal-computer>
             <div class="bg-white overflow-hidden overflow-x-auto shadow-x1 sm:rounded-lg pb-2 shrink">
                 <table class="md:table-fixed w-full font-anek">
                     <thead class="h-12">
                         <tr class="bg-white text-dark">
-                             <div>
+                            <div>
                                 <div>
 
                                     @if (!empty($search))
@@ -61,7 +47,6 @@
                             <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Marca</th>
                             <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Categoría</th>
                             <th class="2xl:text-lg text-center text-ellipsis overflow-hidden border-b-2 border-black">Estado</th> --}}
-                            <th class="2xl:text-lg border-b-2 border-black">Editar</th>   
                         </tr>
                     </thead>
                     <tbody>
@@ -91,13 +76,6 @@
                                 <livewire:product.toggle-product :product="$product" :field="'estado_product'"
                                 :key="'toggle-button'.$product->id">
                             </td>  --}}
-                            <td class="pr-3 py-1 2xl:text-lg text-center border-b border-gray-400">
-                                    <a wire:click="editar({{ $product->id }})"> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="2.5" stroke="#3391d6" class="w-6 h-6 m-auto block">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-                                </a>
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>

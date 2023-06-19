@@ -9,6 +9,13 @@ class Computer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'serial',
+        'marca',
+        'image',
+        'state_id'
+    ];
+
     public function state()
     {
         return $this->belongsTo(State::class);
@@ -16,5 +23,9 @@ class Computer extends Model
     public function perifericos()
     {
         return $this->hasMany(Periferico::class);
+    }
+    public function operations()
+    {
+        return $this->hasMany(Operation::class);
     }
 }
