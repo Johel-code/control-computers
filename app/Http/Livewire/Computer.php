@@ -75,7 +75,6 @@ class Computer extends Component
     }
     public function guardar()
     {
-        dd($this->image);
         $this->validate();
         $img = $this->image->store('images', 'public');
 
