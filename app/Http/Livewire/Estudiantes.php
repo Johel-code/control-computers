@@ -77,7 +77,6 @@ class Estudiantes extends Component
         $this->fecha_nacimiento = $docente->fecha_nacimiento;
         $this->password = $docente->password;
         $this->rol = $docente->roles()->first()->id;
-        //dd($this->state);
         $this->abrirModal();
     }
     public function guardar()

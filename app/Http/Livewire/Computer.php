@@ -23,7 +23,6 @@ class Computer extends Component
         'serial' => 'required',
         'marca' => 'required',
         'state' => 'required', 
-        'image' => 'required'
     ];
 
     public function render()
@@ -67,7 +66,6 @@ class Computer extends Component
         $this->marca = $computer->marca;
         $this->image = $computer->image;
         $this->state = $computer->state->id;
-        //dd($this->state);
         $this->abrirModal();
     }
     public function guardar()

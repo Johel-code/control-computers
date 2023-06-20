@@ -33,22 +33,11 @@ class Modal extends Component
             $this->var = 1;
         }
         
-        // $computersQuitar = Computer::where('computers.state_id', '=', 1)
-        //     ->where('operations.user_id', '=', $this->var)
-        //     ->join('operations', 'computers.id', '=', 'operations.computer_id')
-        //     ->get();
         $computersQuitar = Computer::where('state_id', 1)    
             ->whereHas('operations', function ($query){
                 $query->where('user_id', $this->var );
             })
             ->get();
-
-        // $computersQuitar = Computer::join('operations', 'operations.computer_id', '=', 'computers.id')
-        //     ->where('computers.state_id', '=', 1)
-        //     ->where('operations.user_id', '=', $var)
-        //     ->select('computers.id', 'computers.serial')
-        //     ->distinct()
-        //     ->get();
 
         $asignaciones = Operation::select('computers.id', 'computers.serial', 'type_operations.name', 'operations.updated_at')
             ->where('operations.user_id', '=', $this->var)
@@ -56,8 +45,6 @@ class Modal extends Component
             ->join('computers', 'operations.computer_id', '=', 'computers.id')
             ->join('type_operations', 'operations.type_operation_id', '=', 'type_operations.id')
             ->paginate(5);
-
-//        dd($asignaciones);
 
         return view('livewire.modal', [
             'computers' => $computers,
