@@ -67,7 +67,6 @@ class Computer extends Component
         $this->marca = $computer->marca;
         $this->image = $computer->image;
         $this->state = $computer->state->id;
-        //dd($this->state);
         $this->abrirModal();
     }
     public function guardar()

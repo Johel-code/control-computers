@@ -28,16 +28,12 @@ class Asignaciones extends Component
 
     public function render()
     {
-        // $computers = Computer::where('serial', 'like', '%' . $this->search . '%')->paginate(5);
-
         $computers = Computer::where('serial', 'like', '%' . $this->search . '%')
             ->where('computers.state_id', '=', 1)
             ->whereHas('operations', function ($query){
                 $query->where('operations.user_id', Auth::id());
             })
             ->paginate(5);
-
-        // dd($computers);
 
         return view('livewire.asignaciones', [
             'computers' => $computers,
