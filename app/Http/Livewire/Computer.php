@@ -23,7 +23,6 @@ class Computer extends Component
         'serial' => 'required',
         'marca' => 'required',
         'state' => 'required', 
-        'image' => 'required'
     ];
 
     public function render()
