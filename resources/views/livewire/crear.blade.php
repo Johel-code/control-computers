@@ -51,6 +51,11 @@
                 <label for="name" class="text-md text-gray-600">Imagen</label>
                 <input  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 border-solid border-black leading-tight focus:outline-none focus:shadow-none" accept="image/*" 
                         id="foto" name="img" type="file"  wire:model="image" placeholder="Seleccionar">
+                @if($flag)
+                    <img src="{{ asset('storage/'.$image) }}" alt="">
+                @elseif($image)
+                    <img src="{{ $image->temporaryUrl() }}" alt="">
+                @endif
 
             <x-input-error for="image" />
             </div>
@@ -66,6 +71,7 @@
                     Cancel
                 </button>
                 <button
+                    enctype="multipart/form-data"
                     wire:click.prevent="guardar()" 
                     class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400">
                     Guardar
