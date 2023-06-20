@@ -15,7 +15,7 @@ class Computer extends Component
 
     public $search = "";
     
-    public $id_computer, $serial, $marca, $state, $image;
+    public $id_computer, $serial, $marca, $state, $image, $flag;
 
     public $modal = false;
     
@@ -55,8 +55,9 @@ class Computer extends Component
         $this->marca = '';
         $this->serial = '';
         $this->state = '';
-        $this->image = '';
+        $this->image = null;
         $this->id_computer = null;
+        $this->flag = false;
     }
 
     public function editar($id)
@@ -65,12 +66,16 @@ class Computer extends Component
         $this->id_computer = $id;
         $this->serial = $computer->serial;
         $this->marca = $computer->marca;
-        $this->image = $computer->image;
+        if($computer->image){
+            $this->image = $computer->image;
+            $this->flag = true;
+        }
         $this->state = $computer->state->id;
         $this->abrirModal();
     }
     public function guardar()
     {
+        dd($this->image);
         $this->validate();
         $img = $this->image->store('images', 'public');
 
