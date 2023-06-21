@@ -71,7 +71,6 @@
                     Cancel
                 </button>
                 <button
-                    enctype="multipart/form-data"
                     wire:click.prevent="guardar()" 
                     class="px-4 bg-blue-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400">
                     Guardar
