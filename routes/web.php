@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TestRedis;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('computer-redis', [TestRedis::class, 'index'] );
+Route::get('computer', [TestRedis::class, 'getComputer'] );
+
+Route::get('/redis', function(){
+    $redis = Redis::incr('p');
+    return $redis;
+});
 
 Route::middleware([
     'auth:sanctum',
